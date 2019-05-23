@@ -16,16 +16,8 @@ export interface IAppState {
     readonly Standort: String
   }
 }
-
-export interface IAppProps {
-  StateMessstation: {
-    readonly Msw_PM_10: number,
-    readonly Msw_Nox: number,
-    readonly Latitude: number,
-    readonly Longitude: number,
-    readonly Standort: String
-  }
 }
+export interface IAppProps {}
 
 //class App extends Component {
 class App extends React.Component<IAppProps, IAppState>{
