@@ -8,14 +8,14 @@ import LineChartView from './LineChartView';
 import MapView from './MapView';
 
 export interface IAppState {
-  StateMessstation: {
-    readonly Msw_PM_10: number,
-    readonly Msw_Nox: number,
-    readonly Latitude: number,
-    readonly Longitude: number,
-    readonly Standort: String
-  }
+  messstaionDaten: MessstationDaten;
 }
+export interface MessstationDaten {
+  readonly Msw_PM_10: number;
+  readonly Msw_Nox: number;
+  readonly Latitude: number;
+  readonly Longitude: number;
+  readonly Standort: String;
 }
 export interface IAppProps {}
 
@@ -26,7 +26,7 @@ class App extends React.Component<IAppProps, IAppState>{
     super(probs);
 
     this.state = {
-      StateMessstation: {
+      messstaionDaten: {
         Msw_PM_10: 2,
         Msw_Nox: 0,
         Latitude: 6.652006,
@@ -63,8 +63,7 @@ class App extends React.Component<IAppProps, IAppState>{
     const decodedData = Messstation1.docs.map((value) => {
       return value.data()
     })
-    this.setState({ StateMessstation: decodedData });
-
+    this.setState({ messstaionDaten: decodedData[0] as MessstationDaten });
     //console.log(this.state.StateMessstation[0].get());
     //this.state.StateMessstation[0].Msw_PM_10
   }
@@ -89,9 +88,14 @@ class App extends React.Component<IAppProps, IAppState>{
           </div>
           <div className="flex-basis-5" />
           <div className="flex-basis-30">
-            <div className="first"> <HalfPieChartView AktuelleMessung={this.state.StateMessstation.Msw_PM_10} /> </div>
             <div className="second"><HalfPieChartView AktuelleMessung={12} /> </div>
             <div><LineChartView /> </div>
+            <div className="first">
+              {" "}
+              <HalfPieChartView
+                AktuelleMessung={this.state.messstaionDaten.Msw_PM_10}
+              />{" "}
+            </div>
           </div>
         </div>
 
