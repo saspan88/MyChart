@@ -34,7 +34,6 @@ class App extends React.Component<IAppProps, IAppState>{
         Standort: "WHS_Bocholt"
       }
     };
-
   }
 
   async componentDidMount() {
@@ -58,43 +57,43 @@ class App extends React.Component<IAppProps, IAppState>{
     //})
     //this.setState({ StateMessstation: decodedData });
 
+    const Messstation1 = await db.collection("Messstation1").get();
+    const decodedData = Messstation1.docs.map(value => {
+      return value.data();
+    });
 
-    const Messstation1 = await db.collection("Messstation1").get()
-    const decodedData = Messstation1.docs.map((value) => {
-      return value.data()
-    })
     this.setState({ messstaionDaten: decodedData[0] as MessstationDaten });
     //console.log(this.state.StateMessstation[0].get());
     //this.state.StateMessstation[0].Msw_PM_10
   }
-  componentWillMount() { }
+  componentWillMount() {}
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            Messstation Status
-          </p>
+          <p>Messstation Status</p>
         </header>
         <div className="table-headers">
           <div className="flex-basis-10">
-            <p>
-              Sidemenu
-              </p>
+            <p>Sidemenu</p>
           </div>
           <div className="flex-basis-30">
             <MapView />
           </div>
           <div className="flex-basis-5" />
           <div className="flex-basis-30">
-            <div className="second"><HalfPieChartView AktuelleMessung={12} /> </div>
-            <div><LineChartView /> </div>
             <div className="first">
               {" "}
               <HalfPieChartView
                 AktuelleMessung={this.state.messstaionDaten.Msw_PM_10}
               />{" "}
+            </div>
+            <div className="second">
+              <HalfPieChartView AktuelleMessung={12} />{" "}
+            </div>
+            <div>
+              <LineChartView />{" "}
             </div>
           </div>
         </div>
