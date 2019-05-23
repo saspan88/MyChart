@@ -6,6 +6,9 @@
   "dependencies": {
     "firebase": "^6.0.2",
     "konva": "^3.2.6",
+    "pigeon-maps": "^0.13.0",
+    "pigeon-marker": "^0.3.4",
+    "pigeon-overlay": "^0.2.3",
     "re-base": "^4.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
