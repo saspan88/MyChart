@@ -1,7 +1,6 @@
 import './App.css';
 
 import * as React from 'react';
-import { Component } from 'react';
 
 import firebase from './fire';
 import HalfPieChartView from './HalfPieChartView';
