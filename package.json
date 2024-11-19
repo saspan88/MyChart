@@ -4,7 +4,7 @@
   "private": true,
   "main": "src/index.tsx",
   "dependencies": {
-    "firebase": "^6.0.2",
+    "firebase": "^10.9.0",
     "konva": "^3.2.6",
     "pigeon-maps": "^0.13.0",
     "pigeon-marker": "^0.3.4",
